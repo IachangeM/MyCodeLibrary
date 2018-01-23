@@ -42,6 +42,7 @@ def isPrime_sixMultiple(n):
 
     # 在 6*m 两侧的数也不一定是素数, 所以下面根据质数一定在6m两侧 以6为步数快进
     # 需要理解：已知一个数为(6m±1) 使用sqrt的办法 怎么判断是否为素数？
+    # 实际上使用了质因数分解 2*3*5*7*11....6m 两侧的数的质因数不可能有2、3、4、6...
     ret = True
     count = int(math.sqrt(n)) + 1
     for i in range(5, count, 6):
