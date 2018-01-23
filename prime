@@ -38,7 +38,6 @@ def isPrime_sixMultiple(n):
     ret = True
     count = int(math.sqrt(n)) + 1
     for i in range(5, count, 6):
-        print(i)
         if n%i==0 or n%(i+2)==0:
             ret = False
             break
