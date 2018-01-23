@@ -1,6 +1,6 @@
 ```python
 this is python3.6.1
-```
+
 
 import math
 
@@ -55,6 +55,6 @@ def isPrime_sixMultiple(n):
 
 ## Eratosthenes筛法
 
-
+```
 
 
