@@ -1,5 +1,7 @@
 ```python
 this is python3.6.1
+@author:achange
+```
 
 
 import math
@@ -38,7 +40,8 @@ def isPrime_sixMultiple(n):
     if n%6!=1 and n%6!=5:
         return False
 
-    # 在 6*m 两侧的数也不一定是素数
+    # 在 6*m 两侧的数也不一定是素数, 所以下面根据质数一定在6m两侧 以6为步数快进
+    # 需要理解：已知一个数为(6m±1) 使用sqrt的办法 怎么判断是否为素数？
     ret = True
     count = int(math.sqrt(n)) + 1
     for i in range(5, count, 6):
@@ -55,6 +58,6 @@ def isPrime_sixMultiple(n):
 
 ## Eratosthenes筛法
 
-```
+
 
 
