@@ -1,0 +1,20 @@
+
+import math
+
+####
+  素数判断
+####
+
+def isPrime_simple(n):
+  ret = True
+  for i in range(2, n):
+    if n%i == 0:
+      ret = False
+      break
+  return ret
+
+def isPrime_sqrt(n):
+  
+  
+
+
