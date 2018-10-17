@@ -1,6 +1,11 @@
 import torch
 import torch.nn as nn
 
+"""
+pytorch 实现dice loss的讨论：
+    https://github.com/pytorch/pytorch/issues/1249
+"""
+
 class DiceLoss(nn.Module):
     def __init__(self):
         super(DiceLoss, self).__init__()
