@@ -11,8 +11,8 @@ def _convert_to_boolean(value):
     return BOOLEAN_STATES[value.lower()]
 
 
-def _parse_value(value):
-    """在使用self._convert_to_boolean/int/float/str将字符串解析成python对应数据类型的时候
+def parse_value(value):
+    """在使用_convert_to_boolean/int/float/str将字符串解析成python对应数据类型的时候
     注意：
         整数可以被解析成小数，所以一定先尝试解析成整数
         bool值可以被解析成字符串
