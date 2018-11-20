@@ -7,7 +7,7 @@ from paddle.fluid.contrib.trainer import *
 
 
 def optimizer_program():
-    return fluid.optimizer.SGD(learning_rate=0.001)
+    return fluid.optimizer.SGD(learning_rate=0.0001)
 
 
 def train_program():
