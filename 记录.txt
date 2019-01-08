@@ -15,8 +15,8 @@ python利用Matplotlib，设置坐标刻度大小，字体/设置图例大小及
   终极通过自定义函数设置：https://www.cnblogs.com/Ms-Green/p/6203850.html
 
 
-
-
+【深入详解matplotlib画图进阶】【很有用】
+     https://www.jianshu.com/p/3937798d645b
 
 
 
