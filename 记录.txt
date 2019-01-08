@@ -1,0 +1,18 @@
+Python 画多个曲线的折线图（matplotlib.pyplot.plot）：
+      https://blog.csdn.net/site1997/article/details/79180384
+
+Matplotlib常用绘图示例
+      https://www.cnblogs.com/faramita2016/p/7784699.html
+
+
+python利用Matplotlib，设置坐标刻度大小，字体/设置图例大小及字体/设置纵横坐标名称及字体及大小
+      https://blog.csdn.net/A_Z666666/article/details/81165123
+      
+
+【设置X轴的非数字表示】
+设置文字刻度：
+  https://cloud.tencent.com/developer/news/208308
+  终极通过自定义函数设置：https://www.cnblogs.com/Ms-Green/p/6203850.html
+
+
+
