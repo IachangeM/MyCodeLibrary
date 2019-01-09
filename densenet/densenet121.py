@@ -1,3 +1,10 @@
+"""
+links:
+https://github.com/martinGalajdaSchool/object-detection/blob/master/densenetpretrained/densenet121.py
+
+"""
+
+
 from keras.models import Model
 from keras.layers import Input, concatenate, ZeroPadding2D
 from keras.layers.core import Dense, Dropout, Activation
