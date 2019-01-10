@@ -48,9 +48,9 @@ int main()
         sizeof(multi_dim_array)  =  120
 
         [address info]
-          POINTER		       CONTENT
-          array 		   0x7fff695a7b30
-          array+1		   0x7fff695a7b34
+          POINTER		   CONTENT
+          array 		0x7fff695a7b30
+          array+1		0x7fff695a7b34
           multi_dim_array	0x7fff695a7b40
           multi_dim_array+1	0x7fff695a7b7c
          *multi_dim_array	0x7fff695a7b40
