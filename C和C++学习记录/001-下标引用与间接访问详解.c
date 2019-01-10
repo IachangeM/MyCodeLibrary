@@ -1,3 +1,8 @@
+/*
+from: 《C和指针》第八章 数组
+@author:geekac
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
