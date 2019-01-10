@@ -48,7 +48,7 @@ int main()
         sizeof(multi_dim_array)  =  120
 
         [address info]
-          pointer		    content
+          POINTER		       CONTENT
           array 		    0x7fff695a7b30
           array+1		    0x7fff695a7b34
           multi_dim_array	0x7fff695a7b40
@@ -76,7 +76,7 @@ int main()
         (2) 如果两个做相减运算的指针不是同一个数组中的元素，其结果为未定义！
 
         (3) 指针可以做关系运算： > >=   < <=
-        【重要】作为函数参数的数组名
+       【重要】作为函数参数的数组名
             int strlen(char *string);
             int strlen(char string[]);
             等价于int strlen(char string[10]);//函数不为数组参数分配内存空间！！
@@ -99,8 +99,8 @@ int main()
         p1先和[]结合构成数组的定义，"int *"表明数组元素的类型是int型指针；
         p2先和*结合构成指针的定义，int表明数组元素的类型，这里没有数组名(匿名数组)。
         并且p2的值等于数组的首地址。
-        【重要】 声明数组指针时，如果省略数组的长度，则不能在该指针上执行任何指针运算。
-                int (*p)[] = matrix;//运算时，将根据空数组的长度调整，也就是与零相乘！
+       【重要】 声明数组指针时，如果省略数组的长度，则不能在该指针上执行任何指针运算。
+               int (*p)[] = matrix;//运算时，将根据空数组的长度调整，也就是与零相乘！
     */
 
 
