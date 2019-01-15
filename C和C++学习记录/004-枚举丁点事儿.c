@@ -7,7 +7,12 @@
 #include <stdlib.h>
 
 
-struct PARTINFO{
+//枚举定义的方式： enum [枚举名标签tag] {...};
+enum  person { id, gender};
+typedef enum { id, name} STUDENT;
+
+
+struct PARTINFO{ //PARTINFO是结构体标签tag
     int cost;
     int supplier;
     enum {PART=1, SUBASSY=1} type;
