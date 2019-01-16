@@ -24,3 +24,140 @@ python利用Matplotlib，设置坐标刻度大小，字体/设置图例大小及
     https://www.cnblogs.com/zhanggui/p/7722541.html
 
 
+【汇总】 接触过的深度学习模型汇总
+Towards Adversarial(对抗) Retinal Image Synthesis：    https://github.com/costapt/vess2ret
+Facebook Research（各种模型和工具 visdom等） ：            https://github.com/facebookresearch
+CycleGAN-TensorFlow：                                 https://github.com/vanhuyz/CycleGAN-TensorFlow
+
+
+vae-gan-tensorflow：           https://github.com/zhangqianhui/vae-gan-tensorflow
+torchsample：                  https://github.com/ncullen93/torchsample
+pytorch-sepconv：              https://github.com/sniklaus/pytorch-sepconv
+unet-pytorch                  https://github.com/jaxony/unet-pytorch
+UNet              https://github.com/notha99y/UNet
+
+Pytorch-UNet                  https://github.com/milesial/Pytorch-UNet
+Tensorflow-Unet               https://github.com/BboyHanat/Tensorflow-Unet
+tensorboardX                  https://github.com/lanpa/tensorboardX
+ReLayNet-tensorflow           https://github.com/skyfu1022/ReLayNet-tensorflow
+Seq2Seq-PyTorch               https://github.com/MaximumEntropy/Seq2Seq-PyTorch
+semantic-segmentation-pytorch https://github.com/CSAILVision/semantic-segmentation-pytorch
+                              还有其他高星的项目https://github.com/CSAILVision
+
+Semantic-Segmentation-of-Retinal-Fundus-Vasculature
+就是重命名为ImageSegmentation-Tensorflow的那个模型：  https://github.com/b-schneller/Semantic-Segmentation-of-Retinal-Fundus-Vasculature
+      
+
+Semantic-Segmentation_Multiple-Class      https://github.com/KHKANG36/Semantic-Segmentation_Multiple-Class
+scikit-learn源码                           https://github.com/scikit-learn/scikit-learn
+
+
+mSRGAN-A-GAN-for-single-image-super-resolution-on-high-content-screening-microscopy-images.
+https://github.com/Saurabh23/mSRGAN-A-GAN-for-single-image-super-resolution-on-high-content-screening-microscopy-images.
+
+
+
+作者【DeepTrial】的代码库：      
+Retina-VesselNet： https://github.com/DeepTrial/Retina-VesselNet
+Optic-Disc-Unet   https://github.com/DeepTrial/Optic-Disc-Unet
+他收集的网络模型：    https://github.com/DeepTrial/DeepLearningModelCollection
+【在这里补充同一系列的其他网络：包括分Patch都是相似的】
+...最原始的血管分割成190000 patches
+   retina-unet       https://github.com/orobix/retina-unet
+
+
+
+
+
+ResidualDenseNetwork-Pytorch        https://github.com/lizhengwei1992/ResidualDenseNetwork-Pytorch
+打印类似keras的Pytorch网络模型：        pytorch-summary： https://github.com/sksq96/pytorch-summary
+
+
+pytorch-DPNs(Dual Path Networks):        https://github.com/oyam/pytorch-DPNs
+Keras-DualPathNetworks                    https://github.com/titu1994/Keras-DualPathNetworks
+Dual-based-Ultra-Dense-Netwprks-Optimation      https://github.com/zhuwenxing/Dual-based-Ultra-Dense-Networks-Optimation
+pytorch-dpn-pretrained        https://github.com/rwightman/pytorch-dpn-pretrained
+DualPathNet                   https://github.com/Queequeg92/DualPathNet
+
+
+
+
+几个重要的模型, 也比较复杂：
+pytorch-CycleGAN-and-pix2pix：注意其他的实现Other implementations以及相关模型Related Projects
+https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/train.py
+该作者的其他模型：CycleGAN：      https://github.com/junyanz/CycleGAN
+【重要】  pytorch/examples        https://github.com/pytorch/examples
+      同样看看pytorch下的其他项目： https://github.com/pytorch
+      
+pix2pixHD(NVIDIA实现)     https://github.com/NVIDIA/pix2pixHD
+英伟达的其他项目：               https://github.com/NVIDIA
+
+pix2pix：                      https://github.com/phillipi/pix2pix
+Attention-Gated-Networks      https://github.com/ozan-oktay/Attention-Gated-Networks
+以及该作者自己实现的torchsample： 
+https://github.com/ozan-oktay/torchsample
+https://github.com/ozan-oktay/torchsample/tarball/master#egg=torchsample-0.1.3
+
+各种Unet: Image_Segmentation    https://github.com/LeeJunHyun/Image_Segmentation
+imagenet    https://github.com/floydhub/imagenet/blob/master/main.py
+ICIAR2018   https://github.com/ImagingLab/ICIAR2018
+            https://github.com/ImagingLab/2StepBayesianClassifier
+
+
+
+stargan     https://github.com/yunjey/stargan
+
+
+-----------------------------------------------
+
+optic-nerve-cnn视盘的：  https://github.com/seva100/optic-nerve-cnn
+MULTI-LABEL-CLASSIFICATION-SCHEME-BASED-ON-LOCAL-REGRESSION-FOR-RETINAL-VESSEL-SEGMENTATION
+https://github.com/howardchina/MULTI-LABEL-CLASSIFICATION-SCHEME-BASED-ON-LOCAL-REGRESSION-FOR-RETINAL-VESSEL-SEGMENTATION
+
+《深度学习》 圣经 中文版：    https://github.com/exacity/deeplearningbook-chinese
+
+
+
+kaggle_diabetic_retinopathy         https://github.com/JeffreyDF/kaggle_diabetic_retinopathy
+ShuffleNet                    https://github.com/jaxony/ShuffleNet
+CU-Net            https://github.com/zhiqiangdon/CU-Net
+
+
+【重要】【别人做的汇总VAE/GAN等等】
+generative-models       https://github.com/wiseodd/generative-models
+progressive_growing_of_gans   https://github.com/tkarras/progressive_growing_of_gans
+TensorFlow-VAE-GAN-DRAW       https://github.com/ikostrikov/TensorFlow-VAE-GAN-DRAW
+chainer-vae-gan               https://github.com/dsanno/chainer-vae-gan
+V-GAN-tensorflow              https://github.com/ChengBinJin/V-GAN-tensorflow
+Image-Synthesis-Using-GAN     https://github.com/balag59/Image-Synthesis-Using-GAN
+
+
+MXNET：      https://github.com/apache/incubator-mxnet
+查看apche下的其他代码库
+
+bio-segmentation-dense  https://github.com/mjpekala/bio-segmentation-dense
+DenseGAN-SuperResolution      https://github.com/mihirsathe/DenseGAN-SuperResolution
+HyperDenseNet                 https://github.com/josedolz/HyperDenseNet
+
+
+Breast-Segmentation-in-MR-Images          https://github.com/canyilmaz90/Breast-Segmentation-in-MR-Images
+pytorch-classification              https://github.com/bearpaw/pytorch-classification
+
+PascalClassificationPytorch         https://github.com/bbrattoli/PascalClassificationPytorch
+
+
+
+
+看下这个https://github.com/tectal
+http://blog.chaopengz.top/2018/03/20/%E3%80%8A%E5%89%91%E6%8C%87Offer%E3%80%8B%E7%AC%94%E8%AE%B0/#more
+
+
+
+
+
+
+
+
+
+
+
