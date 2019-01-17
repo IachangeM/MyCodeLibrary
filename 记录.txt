@@ -1,3 +1,12 @@
+【多通道融合彩图】
+R:  OD
+G:  HE*0.6 + EX*0.4
+B:  SE*0.2 + MA*0.8
+
+
+
+
+
 Python 画多个曲线的折线图（matplotlib.pyplot.plot）：
       https://blog.csdn.net/site1997/article/details/79180384
 
