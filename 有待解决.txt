@@ -1,6 +1,6 @@
 1.下面的代码在C/C++都可以通过编译并运行,那么const的作用是什么？(2019.1.18 0:33)
 #include<stdio.h>
-#include<stdarg.h>
+#include<stdlib.h>
 
 int main(int argc, const char* argv[])
 {
