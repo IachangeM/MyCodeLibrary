@@ -4,6 +4,9 @@ G:  HE*0.6 + EX*0.4
 B:  SE*0.2 + MA*0.8
 
 
+医学图像分割数据集
+https://drive.google.com/drive/folders/1HqEgzS8BV2c7xYNrZdEAnrHk7osJJ--2
+
 
 
 
