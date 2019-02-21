@@ -6,6 +6,8 @@
 #define NoChild 10
 using namespace std;
 
+地址：https://pintia.cn/problem-sets/16/problems/666
+
 /*这道题还是使用结构数组更合适，因为找到的rootId是数字
 struct Node{
     int val;
