@@ -137,6 +137,15 @@ int main(){
     */
 
 
+
+    /****   999. typdef自定义高级类型  ****/
+    typedef int tArray[10];    tArray arr;//arr是含有10个元素的整型数组
+    typedef int Matrix[5][5];  Matrix marr;//marr是5×5的整型二维数组
+    typedef char *pCharArray[5]; pCharArray parr_c;  //parr_c是char型指针数组类型，数组的长度为5
+    typedef int(*multiPIntArr)[5]; multiPIntArr piarr; //piarr是指向int的二维数组的指针类型
+    typedef int (*MYFUN)(int, int); //MYFUN是函数指针类型！
+    //【总结】
+    //在高级声明前面加上typedef 则高级声明的变量名称为 对应的类型声明符号用于声明该类型的变量。
+
     return 0;
 }
-
