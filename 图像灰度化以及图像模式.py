@@ -1,4 +1,3 @@
-
 import numpy as np
 
 """
@@ -12,10 +11,10 @@ import numpy as np
 
 """
 
-METHOD_1 = 1    # 分量法
-METHOD_2 = 2    # 均值法
-METHOD_3 = 3    # 最大值
-METHOD_4 = 4    # 加权平均
+METHOD_1 = 1  # 分量法
+METHOD_2 = 2  # 均值法
+METHOD_3 = 3  # 最大值
+METHOD_4 = 4  # 加权平均
 
 
 def cvt2Gray(img: np.ndarray, method, channel='R'):
@@ -39,6 +38,19 @@ def cvt2Gray(img: np.ndarray, method, channel='R'):
     if method == METHOD_4:
         L = img[0] * 299 / 1000 + img[1] * 587 / 1000 + img[2] * 114 / 1000
         return L.astype(img.dtype)
+
+
+
+"""
+
+    PILLOW图像模式转换：
+        从彩图(.png,jpg等)的模式均为RGB 转换的 模式L，即灰度化 默认采用的是(4) 加权平均值法
+    
+    但这里要说的是 从模式I 转换到 RGBA模式：
+        >= 255  转换为 255
+        其他值保持不变
+
+"""
 
 
 
