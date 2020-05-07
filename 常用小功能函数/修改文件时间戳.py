@@ -7,15 +7,15 @@
     @ author: achange
 """
 
-import win32file
-import win32timezone
-import time
 import os
-from glob import glob
+import time
+
+from pywintypes import Time
+
+import win32timezone
+import win32file
 from win32file import CreateFile, SetFileTime, GetFileTime, CloseHandle
 from win32file import GENERIC_READ, GENERIC_WRITE, OPEN_EXISTING
-from pywintypes import Time
-import win32api
 
 
 def str2time(string):
