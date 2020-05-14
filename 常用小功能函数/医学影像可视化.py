@@ -14,8 +14,28 @@ from PIL import Image
 import SimpleITK as Sitk
 
 
-def slice2img(slice_data):
-    img_data = (slice_data / (np.max(slice_data) + 1e-5)) * 255   # 这只是一种策略，也可以使用归一化0-1再乘以255等....如果直接省略这句呢？
+
+def data_normalize(img: np.ndarray) -> np.ndarray:
+    """ 标准化和归一化，方便训练 加速收敛。
+    :param img:
+    :return: np.ndarray
+    """
+    if np.max(img) == 0.0:
+        return img
+
+    img_std = np.std(img)
+    img_mean = np.mean(img)
+    img_normalized = (img - img_mean) / img_std
+    img_normalized = (img_normalized - np.min(img_normalized)) / (np.max(img_normalized) - np.min(img_normalized))
+    return img_normalized.astype(np.float32)
+
+
+
+def slice2img(slice_data, normalize=False):
+    if normalize or np.min(slice_data) < 0:
+        slice_data = data_normalize(slice_data)
+    else:
+        img_data = (slice_data / (np.max(slice_data) + 1e-5)) * 255   # 这只是一种策略，也可以使用归一化0-1再乘以255等....如果直接省略这句呢？
     img_data = np.asarray(Image.fromarray(img_data).convert('RGB'))    # 使用PIL.Image函数将其转换为RGB / RGBA 常见图像模式...这里将单通道转换成了三通道
     return img_data
     
