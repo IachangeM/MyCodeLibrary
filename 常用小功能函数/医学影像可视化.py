@@ -18,6 +18,7 @@ from PyQt5 import QtGui
 import numpy as np
 from PIL import Image
 import SimpleITK as Sitk
+from functools import reduce
 
 
 
@@ -81,15 +82,26 @@ def show_with_label():
     _t = np.expand_dims((predict_label > 0), -1).astype(np.uint8)   # 512x512x1
     seg_mask = np.concatenate((_t, _t, _t), axis=-1)    # 512x512x3
     img_data = img_data * (1 - seg_mask)
-
-    label = np.concatenate((
-        np.expand_dims(((seg_data == 1) * 255 + (seg_data == 4) * 255), axis=-1),  # R 通道
-        np.expand_dims(((seg_data == 2) * 255 + (seg_data == 4) * 255), axis=-1),  # G 通道
-        np.expand_dims(np.zeros(shape=img_size), axis=-1)                           # B 通道
-    ), axis=-1).astype(np.uint8)
-
-    img_data += label
     
+    # 2.根据label生成rgb的彩色标签图
+    # R 通道
+    R = np.expand_dims(
+        reduce(np.add, [(predict_label == label) * LABEL_TO_COLOR[label][0] for label in LABEL_TO_COLOR.keys()]), axis=-1
+    ).astype(np.uint8)
+
+    # G 通道
+    G = np.expand_dims(
+        reduce(np.add, [(predict_label == label) * LABEL_TO_COLOR[label][1] for label in LABEL_TO_COLOR.keys()]), axis=-1
+    ).astype(np.uint8)
+
+    # B 通道
+    B = np.expand_dims(
+        reduce(np.add, [(predict_label == label) * LABEL_TO_COLOR[label][2] for label in LABEL_TO_COLOR.keys()]), axis=-1
+    ).astype(np.uint8)
+
+    label_rgb = np.concatenate((R, G, B), axis=-1).astype(np.uint8)
+    
+    img_data += label_rgb
     return img_data
 
 
