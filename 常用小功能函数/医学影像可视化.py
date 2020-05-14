@@ -1,11 +1,17 @@
 """
-  通常，医学影像文件中存储的矩阵值是明显大于0-255范围的 灰度值 或者 亮度值 CT值...
-  要将单个slice展示为二维图像。
-  这涉及到图像模式转换的问题， 参见此项目目录下的 “利用PIL库进行图像模式的转换(简书).pdf”
-  
-  TODO: 将范围超过(0-255)的亮度值  转换为  0-255的图像像素值， 其本质仍然需要深究 以及 涉及的图像处理操作.
-  最常见的图像位深度就是8bit  彩色图像就是8bit*3通道数
-  
+此代码包含2部分功能：
+
+1.医学图像可视化
+    通常，医学影像文件中存储的矩阵值是明显大于0-255范围的 灰度值 或者 亮度值 CT值...
+    要将单个slice展示为二维图像。
+    这涉及到图像模式转换的问题， 参见此项目目录下的 “利用PIL库进行图像模式的转换(简书).pdf”
+
+    TODO: 将范围超过(0-255)的亮度值  转换为  0-255的图像像素值， 其本质仍然需要深究 以及 涉及的图像处理操作.
+    最常见的图像位深度就是8bit  彩色图像就是8bit*3通道数
+
+2.分割标签嵌入医学影像的可视化
+    通常医学影像是只有灰度值/亮度值/CT值的矩阵，某个视图(矢状位/冠状位/横断位)下的切片就是一张灰度图像，可以用上面的方法可视化
+    进行图像分割后，可以结合标签值 用彩色部分显示在原始的灰度图中。这需要先将切片扩充为三个维度的灰度图。
 """
 
 from PyQt5 import QtGui
@@ -13,6 +19,9 @@ import numpy as np
 from PIL import Image
 import SimpleITK as Sitk
 
+
+
+# ###############    PART.1     医学图像可视化        ##################
 
 
 def data_normalize(img: np.ndarray) -> np.ndarray:
@@ -48,6 +57,42 @@ def nparray2pixmap(img_data):
     qimg = QtGui.QImage(img_data, img_data.shape[1], img_data.shape[0], QtGui.QImage.Format_RGB888)
     pixmap01 = QtGui.QPixmap.fromImage(qimg)
     return pixmap01
+
+
+
+# ###############    PART.1     分割标签嵌入医学影像的可视化        ##################
+
+def show_with_label():
+    
+    """
+        标签值对应的RGB颜色, 标签0 默认值就是背景为0
+        palette作为参数
+    """
+    LABEL_TO_COLOR = {
+        1: (255, 0, 0),
+        2: (0, 255, 0),
+        4: (255, 255, 0)
+    }
+
+    img_data = np.random.randint(low=0, high=255, size=(512, 512))      # 512x512的灰度图像
+    predict_label = np.random.randint(low=0, high=5, size=(512, 512))
+
+    # 1.先将标记值非0的img_data体素值重置为0
+    _t = np.expand_dims((predict_label > 0), -1).astype(np.uint8)   # 512x512x1
+    seg_mask = np.concatenate((_t, _t, _t), axis=-1)    # 512x512x3
+    img_data = img_data * (1 - seg_mask)
+
+    label = np.concatenate((
+        np.expand_dims(((seg_data == 1) * 255 + (seg_data == 4) * 255), axis=-1),  # R 通道
+        np.expand_dims(((seg_data == 2) * 255 + (seg_data == 4) * 255), axis=-1),  # G 通道
+        np.expand_dims(np.zeros(shape=img_size), axis=-1)                           # B 通道
+    ), axis=-1).astype(np.uint8)
+
+    img_data += label
+    
+    return img_data
+
+
 
 
 
