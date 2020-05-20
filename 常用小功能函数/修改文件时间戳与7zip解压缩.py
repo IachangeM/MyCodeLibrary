@@ -57,6 +57,7 @@ def change_f_time(f, f_create_time, f_access_time, f_modify_time):
     
  
 # #############   7zip解压缩, 自行百度："最常用的7-zip命令及使用方法"    #######################   
+# for example :http://www.pc6.com/edu/53526_all.html
     
 
 def unzip(zipfile, save_dir, overwrite=False):
