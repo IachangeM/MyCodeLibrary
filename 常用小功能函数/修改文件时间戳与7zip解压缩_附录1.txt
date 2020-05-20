@@ -1,0 +1,130 @@
+pywin32之createfile详解: https://www.cnblogs.com/happy-kitty/p/11801583.html
+
+
+pywin32是python 中的一个模块，它包装了几乎所有的windows API,可以方便地从Python直接调用，该模块另一大主要功能是通过Python进行COM编程。
+
+模块安装方法：pip install pywin32
+
+pywin32把windows api按照不同的功能分成了几大类，以下是所有的分类：
+
+mmapfile odbc perfmon servicemanager timer win2kras win32api win32clipboard win32console
+
+
+win32cred win32crypt win32event win32evtlog win32file win32gui win32help win32inet win32job
+
+
+win32lz win32net win32pdh win32pipe win32print win32process win32profile win32ras win32security
+
+
+ win32service win32trace win32transaction win32ts win32wnet winxpgui
+
+ 
+
+比如 文件类的API 在win32file里，进程类的API在win32process里
+
+ 
+
+下面详细讲解一下win32file模块里的createfile这个method
+
+说明 文档中是这么解释 的：Creates or opens the a file or other object and returns a handle that can be used to access the object. 
+
+翻译过来的意思就是：创建\打开一个文件，或者其他对象，返回结果是一个可以访问的一个handle（句柄）
+
+使用方法：
+
+pyhandle= CreateFile(filename,desiredAccess,shareMode,attributes,CreationDisposition,flagAndAttributes,hTemplateFile)
+
+参数解读：
+
+1、filename 对象的名称
+
+pywin32通常使用内置的Python Unicode对象，任何使用PyUnicode参数的pywin32/COM函数也会接受Python字符串对象，该对象在传递给函数之前会自动使用MBCS编码进行编码。注意，相反的情况通常是“不”为真—文档中记录的接受字符串的函数必须传递一个字符串
+
+2、desiredAccess 访问对象的类型 int
+
+访问对象的类型。应用程序可以获得读访问、写访问、读写访问或设备查询访问。此参数可以是下列值的任意组合。
+
+0：指定对对象的设备查询访问。应用程序可以在不访问设备的情况下查询设备属性。
+
+ 
+
+GENERIC_READ：指定对对象的读访问。可以从文件中读取数据，并且可以移动文件指针。结合GENERIC_WRITE进行读写访问。
+
+ 
+
+GENERIC_WRITE：指定对对象的写访问。数据可以写入文件，文件指针可以移动。结合GENERIC_READ进行读写访问。
+
+3、shareMode 指定如何共享对象的位标志集
+
+如果dwShareMode为0，则不能共享该对象。对对象的后续打开操作将失败，直到句柄关闭。要共享对象，请使用下列一个或多个值的组合:
+
+FILE_SHARE_DELETE:windowsNT:只有在请求删除访问时，对象上的后续打开操作才会成功。
+
+FILE_SHARE_READ:只有在请求读访问时，对象上的后续打开操作才会成功。
+
+FILE_SHARE_WRITE:只有在请求写访问时，对象上的后续打开操作才会成功。
+
+4、attributes 安全属性，或者没有，为None
+
+5、CreationDisposition  指定对存在的文件执行哪个操作，以及在文件不存在时执行哪个操作 int
+
+有关此参数的更多信息，请参见备注部分。该参数必须是以下值之一:
+
+CREATE_NEW:创建一个新文件。如果指定的文件已经存在，则该函数将失败。
+
+CREATE_ALWAYS:创建一个新文件。如果文件存在，该函数将覆盖文件并清除现有属性
+
+OPEN_EXISTING:打开该文件。如果文件不存在，函数将失败。如果您正在为设备(包括控制台)使用CreateFile函数，请参阅备注部分，以了解为什么应该使用OPEN_EXISTING标志
+
+OPEN_ALWAYS:如果文件存在，则打开该文件。如果该文件不存在，该函数将创建该文件，和dwcreationdispose是CREATE_NEW一样
+
+TRUNCATE_EXISTING:打开该文件。一旦打开，文件将被截断，使其大小为零字节。调用进程必须打开至少具有GENERIC_WRITE访问权限的文件。如果文件不存在，函数将失败
+
+6、flagsAndAttributes 文件的属性 int
+
+7、hTemplateFile 指定对模板文件具有GENERIC_READ访问权限的句柄
+
+模板文件为正在创建的文件提供文件属性和扩展属性。在Win95下，这必须是0，否则将引发异常。
+
+ 
+
+备注：可以打开以下形式的对象：
+
+files 文件
+pipes 管道
+mailslots 邮件
+communications resources 通讯资源
+disk devices (Windows NT only) 磁盘设备
+consoles 控制台
+directories (open only) 目录（只读）
+
+举个例子：
+
+import win32file,win32con,win32api
+import os
+def myFileDemo():
+    testName=os.path.join(win32api.GetTempPath(),"win32file_test_file")#创建一个文件C:\xxxx\Local\Temp\win32file_test_file
+    if os.path.exists(testName):os.unlink(testName)  #如果存在这个目录，则删除这个目录
+    handle= win32file.CreateFile(testName,
+                                 win32file.GENERIC_WRITE,
+                                 0,
+                                 None,
+                                 win32con.CREATE_NEW,
+                                 0,
+                                 None)
+    test_data="hello,win32,my happy time啦啦~~~".encode("utf-8")
+    print("test_data:",test_data)
+    win32file.WriteFile(handle,test_data)
+    handle.Close()
+    handle= win32file.CreateFile(testName,win32file.GENERIC_READ,0,None,win32con.OPEN_EXISTING,0,None)
+    rc,data=win32file.ReadFile(handle,1024)
+    handle.Close()
+    if data == test_data:
+        print("successfully wrote and read file")
+    else:
+        raise Exception("failed to write and read file")
+if __name__ == '__main__':
+    myFileDemo()
+
+运行结果：
+successfully wrote and read file
