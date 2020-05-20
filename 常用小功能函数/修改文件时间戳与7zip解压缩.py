@@ -55,12 +55,25 @@ def change_f_time(f, f_create_time, f_access_time, f_modify_time):
     CloseHandle(file_handle)
 
 
-def zipfile()
+def unzip(zipfile, save_dir, overwrite=False):
+    """
+        zipfile: 压缩包路径;  save_dir解压后保存路径;  overwrite保存路径已存在同名文件是否覆盖
+    """
+    # todo: 研究一下python调用cmd执行程序的几种方法，获取返回值等信息！！！
+    
+    tag = " -aoa" if overwrite else ""
+    cmd = "7z x {} -o{}{}".format(zipfile, save_dir, tag)  # todo: -aoa  解压时覆盖解压路径下已经存在的同名文件
+    os.system(cmd)
 
 
+def zipped(zip_folder, save_zip_path):
+    """
+        zip_folder: 待压缩的文件夹下的所有文件;  save_zip_path:  保存的zip包名字及路径
+    """
+    cmd = "7z a -tzip {} {}".format(save_zip_path, zip_folder)     # todo: 7z a -tzip 压缩包路径(含文件名) 待压缩路径
+    os.system(cmd)
 
-
-
+    
 if __name__ == '__main__':
     change_file_time(
         file="D:/achange/code//tmp.py",
