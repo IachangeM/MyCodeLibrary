@@ -4,7 +4,7 @@
   numpy数据类型和python内置数据类型是不同的，不要使用is操作进行判断。。。
   
   numpy数据转换为python数据类型需要使用item函数！！！
-  批量转换使用 tolist()函数！！！~
+  批量转换使用 tolist()函数！！！~ tolist函数可以转换为python的任意内置数据类型 包括字典 defaultdict等等 不仅仅是list!!!
   
   下面还将python数据类型保存为numpy数据格式进行存储 然后加载
 """
@@ -38,6 +38,7 @@ def pythondata2np():
 
     np.save('./circle_info.npy', data, allow_pickle=True)
     dd = np.load('./data/circle_info.npy', allow_pickle=True)
+       
     print(type(dd))
 
     print(type(dd.item()))
@@ -48,9 +49,9 @@ def pythondata2np():
     print(type(dd.item()['LYF_15LAD'][1]))
     print(dd.item()['LYF_15LAD'][1])
 
-
-
-
+    # todo: 一次转换为python 内置类型  字典
+    dd = dd.tolist()
+  
 
 
 
