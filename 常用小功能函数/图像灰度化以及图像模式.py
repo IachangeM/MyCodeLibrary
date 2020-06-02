@@ -17,6 +17,9 @@ METHOD_4 = 4  # 加权平均
 
 
 def cvt2Gray(img: np.ndarray, method, channel='R'):
+    """
+        img是np.asarray(PIL.Image.open('xx.jpg'))返回的图像数据, shape=(图像高度, 图像宽度, 图像RGB通道)
+    """
     assert len(img.shape) == 3
 
     if method == METHOD_1:
@@ -24,7 +27,7 @@ def cvt2Gray(img: np.ndarray, method, channel='R'):
         return img[channel]
 
     if method == METHOD_2:
-        L = np.around((img[0] + img[1] + img[2]).astype(np.float16) / 3)
+        L = np.around((img[:, :, 0] + img[:, :, 1] + img[:, :, 2]).astype(np.float16) / 3)
         return L.astype(img.dtype)
 
     if method == METHOD_3:
@@ -35,7 +38,7 @@ def cvt2Gray(img: np.ndarray, method, channel='R'):
         return L
 
     if method == METHOD_4:
-        L = img[0] * 299 / 1000 + img[1] * 587 / 1000 + img[2] * 114 / 1000
+        L = img[:, :, 0] * 299 / 1000 + img[:, :, 1] * 587 / 1000 + img[:, :, 2] * 114 / 1000
         return L.astype(img.dtype)
 
 
