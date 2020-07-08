@@ -46,7 +46,7 @@ def slice2img(slice_data, normalize=False):
         slice_data = data_normalize(slice_data)
         img_data = slice_data * 255
     else:
-        img_data = (slice_data / (np.max(slice_data) + 1e-5)) * 255   # 这只是一种策略，也可以使用归一化0-1再乘以255等....如果直接省略这句呢？
+        img_data = (slice_data / (np.max(slice_data) - np.min(slice_data) + 1e-5)) * 255   # 这只是一种策略，也可以使用归一化0-1再乘以255等....如果直接省略这句呢？
     
     img_data = np.asarray(Image.fromarray(img_data).convert('RGB'))    # 使用PIL.Image函数将其转换为RGB / RGBA 常见图像模式...这里将单通道转换成了三通道
     return img_data
